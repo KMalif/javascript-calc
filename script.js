@@ -9,13 +9,13 @@ const changeTeme = () => {
           html.setAttribute("data-theme", theme);
           localStorage.setItem("theme-calc", theme);
         });
-      });    
+    });    
 };
 
 
 // set themes
-const getThemePreference = () => {
-    const theme = localStorage.getItem("theme-calc") ?? "default";
+const getThemes = () => {
+    const theme = localStorage.getItem("theme-calc") ?? "firstTheme";
     const toggle = document.querySelector(`input[data-theme=${theme}]`);
   
     if (theme) {
@@ -23,7 +23,6 @@ const getThemePreference = () => {
       toggle.checked = true;
       return;
     }
-  
 };
 
 const keys = document.querySelectorAll("[data-key]");
@@ -116,7 +115,9 @@ const calculate = () => {
       return;
   }
 
-  if (isNaN(result) || result == Infinity) return alert("The number can't be devided");
+  if (isNaN(result) || result == Infinity){
+    return alert("The number can't be devided");
+  } 
 
   firstOperand = Number.isInteger(result) ? result : result.toFixed(2);
   display.textContent = firstOperand;
@@ -125,5 +126,5 @@ const calculate = () => {
 }
 
 changeTeme();
-getThemePreference();
+getThemes();
 handleKeypadPressed();
