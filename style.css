@@ -1,0 +1,240 @@
+:root {
+    --bg-color: #2B4173;
+    --toggle-background: #232C43;
+    --screen-background: #182034;
+    --screen-text-color: #fff;
+    --primary-color: #fff;
+    --text-color-1: #fff;
+    --text-color-2: #444B5A;
+    --key-background-1: #EAE3DC;
+    --key-background-2: #637097;
+    --key-background-3: #D03F2F;
+    --key-shadow-1: #B4A597;
+    --key-shadow-2: #404E72;
+    --key-shadow-3: #93261A;
+  }
+  
+  /* theme 2 */
+  [data-theme="light"] {
+    --bg-color: #E6E6E6;
+    --toggle-background: #D1CCCC;
+    --screen-background: #EDEDED;
+    --screen-text-color: #35352C;
+    --primary-color: #35352C;
+    --text-color-2: #35352C;
+    --key-background-1: #E5E4E1;
+    --key-background-2: #377F86;
+    --key-background-3: #CA5502;
+    --key-shadow-1: #A69D91;
+    --key-shadow-2: #1B5F65;
+    --key-shadow-3: #893901;
+  }
+  
+  /* theme 3 */
+  [data-theme="dark"] {
+    --bg-color: #160628;
+    --toggle-background: #1D0934;
+    --screen-background: #1D0934;
+    --screen-text-color: #FFE53D;
+    --primary-color: #FFE53D;
+    --text-color-2: #FFE53D;
+    --key-background-1: #341C4F;
+    --key-background-2: #58077D;
+    --key-background-3: #00E0D1;
+    --key-shadow-1: #871C9C;
+    --key-shadow-2: #BC15F4;
+    --key-shadow-3: #6CF9F2;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  
+  html {
+    font-size: 62.5%;
+  }
+  
+  body {
+    background: var(--bg-color);
+    font-size: 1.6rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .calc-container {
+    width: min(100%, 375px);
+    padding: 25px 15px;
+    margin: 0 auto;
+  }
+  
+  .calc-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  
+  .calc-header h1 {
+    color: var(--primary-color);
+    font-size: 2.4rem;
+  }
+  
+  .theme {
+    display: flex;
+    align-items: flex-end;
+  }
+  
+  .theme-text {
+    color: var(--primary-color);
+    text-transform: uppercase;
+    font-size: 1rem;
+    margin-right: 15px;
+  }
+  
+  .theme input {
+    display: none;
+  }
+  
+  .theme-switcher {
+    display: flex;
+    justify-content: space-between;
+    width: 6rem;
+    height: 3.4rem;
+    position: relative;
+  }
+  
+  .theme-switcher label {
+    flex: none;
+    width: 33.3%;
+    height: 100%;
+    background-color: transparent;
+    color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1.3rem;
+    position: relative;
+    z-index: 3;
+  }
+  
+  .theme-switcher .indicator {
+    display: none;
+    width: 1.2rem;
+    height: 1.2rem;
+    background: var(--key-background-3);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 3px;
+    z-index: 2;
+  }
+  
+  .theme-switcher input:checked + .indicator {
+    display: inline-block;
+  }
+  
+  .theme .switch-slider {
+    width: 100%;
+    height: 1.8rem;
+    background: var(--toggle-background);
+    border-radius: 10rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 97%;
+    margin: 0 auto;
+  }
+  
+  /* calculator-screen */
+  .screen {
+    margin-top: 20px;
+    background: var(--screen-background);
+    padding: 10px 15px;
+    text-align: right;
+    color: var(--text-color-1);
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    min-height: 7rem;
+    overflow-x: scroll;
+  }
+  
+  .screen::-webkit-scrollbar {
+    appearance: none;
+    height: 3px;
+  }
+  
+  .screen::-webkit-scrollbar-thumb {
+    background: hsl(0, 5%, 81%);
+    border-radius: 25px;
+  }
+  
+  .screen #preview {
+    font-size: 1.2rem;
+    color: var(--screen-text-color);
+  }
+  
+  .screen #display {
+    font-size: 2.7rem;
+    color: var(--screen-text-color);
+    width: 100%;
+    white-space: nowrap;
+  }
+  
+  /* key */
+  .keypad {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: var(--toggle-background);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.8rem;
+    border-radius: 7px;
+  }
+  
+  .keypad .key {
+    min-height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background: var(--key-background-1);
+    color: var(--text-color-2);
+    font-size: 1.6rem;
+    line-height: 1;
+    text-transform: uppercase;
+    box-shadow: inset 0 -2px 0 var(--key-shadow-1);
+  }
+  
+  .keypad :is(.delete, .reset) {
+    background: var(--key-background-2);
+    color: var(--text-color-1);
+    font-size: 1.2rem;
+    box-shadow: inset 0 -2px 0 var(--key-shadow-2);
+  }
+  
+  .keypad .equal {
+    background: var(--key-background-3);
+    color: var(--text-color-1);
+    box-shadow: inset 0 -2px 0 var(--key-shadow-3);
+  }
+  
+  .keypad .key:hover {
+    filter: brightness(200%);
+  }
+  
+  .keypad .span-2 {
+    grid-column: span 2;
+  }
+  
